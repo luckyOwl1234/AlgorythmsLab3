@@ -184,6 +184,7 @@ public class Lists {
         if ( l == null )
             throw new ListsException("Lists: null passed to addLast");
         ListNode newNode = new ListNode();
+        newNode.next = null;
         newNode.element = c;
         ListNode ptr;
 
