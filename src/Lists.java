@@ -41,6 +41,7 @@ public class Lists {
             }
             return p1 == null && p2 == null;
         }
+
     }
     
     // Se förel. OH
