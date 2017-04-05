@@ -43,18 +43,18 @@ public class Lists {
         }
     }
     
-    // Se f?rel. OH
+    // Se förel. OH
     public static ListNode toList(String chars) {
-        ListNode head, ptr1;     // head pekar alltid p? listans huvud
-        head = new ListNode();   // Listans huvud (inneh?ller ej data)
+        ListNode head, ptr1;     // head pekar alltid på listans huvud
+        head = new ListNode();   // Listans huvud (innehåller ej data)
         head.next = null;
-        ptr1 = head;             // ptr pekar p? sista noden
+        ptr1 = head;             // ptr pekar på sista noden
 
         // Bygg en lista av tecken
         for ( int i = 0; i < chars.length(); i++ ) {
             ptr1.next = new ListNode();          // Addera en ny nod sist
             ptr1 = ptr1.next;                    // Flytta fram till den nya noden
-            ptr1.element = chars.charAt(i);      // S?tt in tecknet
+            ptr1.element = chars.charAt(i);      // Sätt in tecknet
             ptr1.next = null;                    // Avsluta listan
         } 
         return head;
