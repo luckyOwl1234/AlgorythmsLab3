@@ -189,8 +189,9 @@ public class JunitListTest {
     @Test
     public void testToString()
     {
-        for ( String s : cases )
+        for ( String s : cases ) {
             assertTrue(s.equals(Lists.toString(Lists.toList(s))));
+        }
     }
     
     @Test(expected = ListsException.class)
@@ -266,7 +267,7 @@ public class JunitListTest {
         // (forall s in cases)(toList(s)+x = toList(s+x))
         for ( String s : cases )
             assertTrue(Lists.equals(Lists.addLast(Lists.toList(s),'X'),
-                                    Lists.toList(s+"X")));
+                                    Lists.toList(s + "X")));
     }
     
     @Test(expected = ListsException.class)

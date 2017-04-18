@@ -104,8 +104,7 @@ public class Lists {
         if ( l == null )
             throw new ListsException("Lists: null passed to toString");
         String temp = "";
-        ListNode head = l;
-        ListNode currentPtr = head;
+        ListNode currentPtr = l.next;
 
         while(currentPtr != null){
             temp += currentPtr.element;
@@ -118,9 +117,9 @@ public class Lists {
     public static boolean contains(ListNode head,char c) {
         if ( head == null )
             throw new ListsException("Lists: null passed to contains");
-        ListNode ptr = head;
+        ListNode ptr = head.next;
 
-        while(ptr.next != null){
+        while(ptr != null){
             if(ptr.element == c){
                 return true;
             }
@@ -157,13 +156,12 @@ public class Lists {
     public static ListNode addFirst(ListNode l,char c) {
         if ( l == null )
             throw new ListsException("Lists: null passed to addFirst");
-        ListNode head = l;
         ListNode newNode = new ListNode();
         newNode.element = c;
-        newNode.next = head.next;
-        head.next = newNode;
+        newNode.next = l.next;
+        l.next = newNode;
 
-        return head;
+        return l;
     }
          
     // This is a private utility method.
@@ -171,7 +169,7 @@ public class Lists {
         if ( head == null )
             throw new ListsException("Lists: null passed to getLastNode");
         ListNode ptr;
-        ptr = head.next;
+        ptr = head;
 
         while(ptr.next != null){
             ptr = ptr.next;
@@ -198,6 +196,8 @@ public class Lists {
     
     // Testmetod: JunitListTest.testConcat()
     public static ListNode concat(ListNode l1,ListNode l2) {
+        if ( l1 == null || l2 == null )
+            throw new ListsException("Lists: null passed to concat");
         ListNode ptr;
 
         ptr = getLastNode(l1);
@@ -209,7 +209,9 @@ public class Lists {
     }
     
     // Testmetod: JunitListTest.testAddAll()
-    public static ListNode addAll(ListNode l1,ListNode l2) { 
+    public static ListNode addAll(ListNode l1,ListNode l2) {
+        if ( l1 == null || l2 == null )
+            throw new ListsException("Lists: null passed to addAll");
         ListNode ptr1, ptr2;
         ptr2 = l2.next;
 
