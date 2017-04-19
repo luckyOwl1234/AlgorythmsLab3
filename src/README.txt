@@ -24,6 +24,4 @@ concat,     Hittar sista noden i lista 1 m.h.a. getLastNode. Sen länkar man på
 addAll,     Här kopieras varje nod från lista 2 till lista 1. Man itterar över lista 2 och lägger till kopior av dess noder i lista 1 efter sista noden,
             som fås av getLastNode.
 
-reverse,    Här ittererar vi först igenom listan för att få antalet noder. Nollställer pekaren till listhead. Pekaren plockar sen den sista noden
-            och lägger till den i en ny lista, counter minskas med 1 så att pekaren nästa gång hämtar det näst sista elementet som den lägger till
-            i den nya listan osv. När counter = 0 så returneras den nya listan som nu är omvänd.
+reverse,    Skapar en kopia av listan och länkar om listan baklänges och lägger till ny head nod i slutet.
