@@ -230,12 +230,11 @@ public class Lists {
       
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {
-
-        if (head == null){
+        if (head == null) {
             throw new ListsException("Lists: null passed to reverse");
         }
 
-       ListNode newHead = mkEmpty();
+        ListNode newHead = mkEmpty();
         ListNode current = copy(head).next;
         ListNode next;
         ListNode prev = null;
@@ -250,6 +249,5 @@ public class Lists {
         newHead.next = prev;
 
         return newHead;
-
     }
 }
