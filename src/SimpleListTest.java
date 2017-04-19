@@ -34,9 +34,10 @@ public class SimpleListTest {
         // Test reverse
         l4 = Lists.reverse(l3);
         print("l4",l4);
-        
+
         // Test concat
         Lists.concat(l3,Lists.toList("-i-"));
+
         Lists.concat(l3,l4);
         print("l3",l3);
         print("l4",l4);
@@ -46,5 +47,26 @@ public class SimpleListTest {
         Lists.addAll(l3,l5);
         print("l3",l3);
         print("l5",l5);
+
+        System.out.println("------------------------------------");
+
+        String s = new String("");
+
+        ListNode l = Lists.addFirst(Lists.toList(s),'X');
+        System.out.println("First L: " + Lists.size(l));
+
+        ListNode lhs = Lists.reverse(l);
+        System.out.println("First LHS: " + Lists.size(lhs));
+
+        l = Lists.toList(s);
+        System.out.println("Second L: " + Lists.size(l));
+
+        ListNode l9 = Lists.reverse(l);
+        Lists.addLast(l9,'X');
+        System.out.println("First L9: " + Lists.size(l9));
+        System.out.println(Lists.equals(lhs,l9));
+
+        System.out.println("------------------------------------");
+
     }
 }

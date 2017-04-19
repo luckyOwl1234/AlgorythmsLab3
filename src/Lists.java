@@ -1,3 +1,5 @@
+import java.util.Objects;
+
 import static java.lang.Character.isUpperCase;
 
 /**
@@ -198,13 +200,11 @@ public class Lists {
     public static ListNode concat(ListNode l1,ListNode l2) {
         if ( l1 == null || l2 == null )
             throw new ListsException("Lists: null passed to concat");
+
         ListNode ptr;
-
         ptr = getLastNode(l1);
-
         ptr.next = l2.next;
         l2.next = null;
-
         return l1;
     }
     
@@ -231,14 +231,30 @@ public class Lists {
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {
 
-        if (head == null || head.next == null){
-            return head;
+        if (head == null /*|| head.next == null*/){
+            //return head;
+            throw new ListsException("Lists: null passed to reverse");
         }
-        ListNode remaining = reverse(head.next);
+
+
+        ListNode newHead = mkEmpty();
+        ListNode reversedPart = null;
+        ListNode current = copy(head);
+        while (current != null) {
+            ListNode next = current.next;
+            current.next = reversedPart;
+            reversedPart = current;
+            current = next;
+        }
+
+        newHead.next = reversedPart;
+
+        return newHead;
+        /*ListNode remaining = reverse(head.next);
         head.next.next = head;
         head.next = null;
         return remaining;
-
+*/
 
         /*
         if (head == null)
@@ -273,5 +289,20 @@ public class Lists {
         }
 
         return newHead;*/
+    }
+
+    public static int size(ListNode head){
+        if(head == null)
+            throw new ListsException("Lists: Null passed to size");
+
+        ListNode ptr2 = head;
+
+        int i = 0;
+
+        while(ptr2 != null){
+            i++;
+            ptr2 = ptr2.next;
+        }
+        return i;
     }
 }
