@@ -231,64 +231,26 @@ public class Lists {
     // Testmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {
 
-        if (head == null /*|| head.next == null*/){
-            //return head;
+        if (head == null){
             throw new ListsException("Lists: null passed to reverse");
         }
 
+       ListNode newHead = mkEmpty();
+        ListNode current = copy(head).next;
+        ListNode next;
+        ListNode prev = null;
 
-        ListNode newHead = mkEmpty();
-        ListNode reversedPart = null;
-        ListNode current = copy(head);
-        while (current != null) {
-            ListNode next = current.next;
-            current.next = reversedPart;
-            reversedPart = current;
+        while(current!=null){
+            next = current.next;
+            current.next = prev;
+            prev = current;
             current = next;
         }
 
-        newHead.next = reversedPart;
+        newHead.next = prev;
 
         return newHead;
-        /*ListNode remaining = reverse(head.next);
-        head.next.next = head;
-        head.next = null;
-        return remaining;
-*/
 
-        /*
-        if (head == null)
-        throw new ListsException("Lists: null passed to reverse");
-
-        ListNode newHead, ptr, ptr2;
-        newHead = new ListNode();
-        newHead.next = null;
-        ptr2 = newHead;
-
-        ptr = head.next;
-        int counter = 0;
-
-        while(ptr.next != null){
-            counter++;
-            ptr = ptr.next;
-        }
-
-        ptr = head.next;
-
-        while(counter >= 0){
-            for(int i = 0; i < counter; i++) {
-                ptr = ptr.next;
-            }
-            ListNode newNode = new ListNode();
-            newNode.next = null;
-            newNode.element = ptr.element;
-            ptr2.next = newNode;
-            ptr2 = ptr2.next;
-            ptr = head.next;
-            counter--;
-        }
-
-        return newHead;*/
     }
 
     public static int size(ListNode head){
