@@ -252,19 +252,4 @@ public class Lists {
         return newHead;
 
     }
-
-    public static int size(ListNode head){
-        if(head == null)
-            throw new ListsException("Lists: Null passed to size");
-
-        ListNode ptr2 = head;
-
-        int i = 0;
-
-        while(ptr2 != null){
-            i++;
-            ptr2 = ptr2.next;
-        }
-        return i;
-    }
 }
