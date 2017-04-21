@@ -212,29 +212,27 @@ public class Lists {
     public static ListNode addAll(ListNode l1,ListNode l2) {
         if ( l1 == null || l2 == null )
             throw new ListsException("Lists: null passed to addAll");
-        ListNode ptr1, ptr2;
-        ptr2 = l2.next;
+        ListNode ptr1;
 
         ptr1 = getLastNode(l1);
-        while(ptr2 != null){
-            ListNode newNode = new ListNode();
-            newNode.next = null;
-            newNode.element = ptr2.element;
-            ptr1.next = newNode;
-            ptr1 = ptr1.next;
-            ptr2 = ptr2.next;
-        }
+        ptr1.next = copy(l2).next;
 
         return l1;
     }
       
-    // Testmetod: JunitListTest.testReverse()
+    // T7estmetod: JunitListTest.testReverse()
     public static ListNode reverse(ListNode head) {
         if (head == null) {
             throw new ListsException("Lists: null passed to reverse");
         }
 
-        ListNode newHead = mkEmpty();
+        ListNode newHead = mkEmpty(), ptr = copy(head).next;
+
+        while(ptr != null) {
+            addFirst(newHead, ptr.element);
+            ptr = ptr.next;
+        }
+        /*ListNode newHead = mkEmpty();
         ListNode current = copy(head).next;
         ListNode next;
         ListNode prev = null;
@@ -246,7 +244,7 @@ public class Lists {
             current = next;
         }
 
-        newHead.next = prev;
+        newHead.next = prev;*/
 
         return newHead;
     }
